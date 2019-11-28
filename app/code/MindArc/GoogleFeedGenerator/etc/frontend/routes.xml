@@ -3,7 +3,7 @@
     <!--Use router 'standard' for frontend route-->
     <router id="standard">
         <!--Define a custom route with id and frontName-->
-        <route frontName="google_feed" id="googlefeedgenerator">
+        <route frontName="google-feed" id="googlefeedgenerator">
             <!--The module which this route match to-->
             <module name="MindArc_GoogleFeedGenerator"/>
         </route>

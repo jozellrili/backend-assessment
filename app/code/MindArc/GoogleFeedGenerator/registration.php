@@ -10,10 +10,10 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 $registrar = new ComponentRegistrar();
 
-if ($registrar->getPath(ComponentRegistrar::MODULE, 'MindArc_GeoIpLocator') === null) {
+if ($registrar->getPath(ComponentRegistrar::MODULE, 'MindArc_GoogleFeedGenerator') === null) {
     ComponentRegistrar::register(
         \Magento\Framework\Component\ComponentRegistrar::MODULE,
-        'MindArc_GeoIpLocator',
+        'MindArc_GoogleFeedGenerator',
         __DIR__
     );
 }
