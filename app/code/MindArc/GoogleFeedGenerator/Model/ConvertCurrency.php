@@ -11,12 +11,11 @@ class ConvertCurrency extends AbstractModel
 {
     /** fixer.io API details */
     const FIXER_IO_API = 'http://data.fixer.io/api/latest';
-    const FIXER_IO_API_KEY = '[insert_API_key_here]';
+    const FIXER_IO_API_KEY = 'ab3834145c4b8f853a366cd31eed5ca0';
 
     /** Cache Configuration Options */
-    const CACHE_TTL = 3600; // 1 day
+    const CACHE_TTL = 3600;
     const CACHE_KEY = 'currency_exchange_rate';
-
 
     const DEFAULT_CURRENCY = 'USD';
     protected $baseCurrency = NULL;
@@ -76,6 +75,7 @@ class ConvertCurrency extends AbstractModel
     {
         // compose the get url with its query strings
         $url = self::FIXER_IO_API . '? ' . http_build_query(['access_key' => self::FIXER_IO_API_KEY, 'format' => 1]);
+
         $curlOpt = [
             CURLOPT_RETURNTRANSFER => true,
         ];
