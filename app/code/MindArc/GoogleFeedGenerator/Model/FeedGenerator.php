@@ -44,9 +44,9 @@ class FeedGenerator extends AbstractModel
      * @param Image $imageHelper
      * @param DirectoryList $directory
      * @param LoggerInterface $logger
-     * @param CurrencyConverter $converter
+     * @param ConvertCurrency $converter
      */
-    public function __construct(CollectionFactory $collectionFactory, UrlInterface $urlInterface, Image $imageHelper, DirectoryList $directory, LoggerInterface $logger, CurrencyConverter $converter)
+    public function __construct(CollectionFactory $collectionFactory, UrlInterface $urlInterface, Image $imageHelper, DirectoryList $directory, LoggerInterface $logger, ConvertCurrency $converter)
     {
         $this->collectionFactory = $collectionFactory;
         $this->urlInterface = $urlInterface;
@@ -69,7 +69,6 @@ class FeedGenerator extends AbstractModel
     }
 
     /**
-     * Generates an XML file containing all the products in the store
      * @return string
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
@@ -105,14 +104,14 @@ class FeedGenerator extends AbstractModel
                 foreach ($productInformation as $key => $info) {
                     $images = ['image', 'small_image', 'thumbnail'];
                     if (in_array($key, $images)) {
-                        // get the human readable link of all the images
-                        $item->appendChild($document->createElement($key, $this->imageHelper->init($product, 'product_base_image')->getUrl()));
-                    } else $item->appendChild($document->createElement($key, $info));
+                                           // get the human readable link of all the images
+                    $item->appendChild($document->createElement($key, $this->imageHelper->init($product, 'product_base_image')->getUrl()));
+                } else $item->appendChild($document->createElement($key, $info));
 
                     if ($key == 'price') $price = $info;
                 }
 
-                $convertedAmount = $this->converter->convertAmount($price);
+                $convertedAmount = $this->converter->convert($price);
                 $item->appendChild($document->createElement('converted_price', $convertedAmount !== false ? $convertedAmount : 'n/a'));
 
                 $channel->appendChild($item);
