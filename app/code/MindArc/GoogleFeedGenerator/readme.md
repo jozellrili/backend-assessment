@@ -8,7 +8,7 @@ With the help of a currency conversion API , we can convert product price to glo
 * Google Feed Generation
 * Currency Conversion
 
-## Technologies Used | API
+## Technology Used | API
 * Fixer IO - Foreign exchange rates and currency conversion JSON API
     https://fixer.io/
 
