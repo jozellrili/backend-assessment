@@ -69,7 +69,6 @@ class FeedGenerator extends AbstractModel
     }
 
     /**
-     * Generates an XML file containing all the products in the store
      * @return string
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
@@ -105,9 +104,9 @@ class FeedGenerator extends AbstractModel
                 foreach ($productInformation as $key => $info) {
                     $images = ['image', 'small_image', 'thumbnail'];
                     if (in_array($key, $images)) {
-                        // get the human readable link of all the images
-                        $item->appendChild($document->createElement($key, $this->imageHelper->init($product, 'product_base_image')->getUrl()));
-                    } else $item->appendChild($document->createElement($key, $info));
+                                           // get the human readable link of all the images
+                    $item->appendChild($document->createElement($key, $this->imageHelper->init($product, 'product_base_image')->getUrl()));
+                } else $item->appendChild($document->createElement($key, $info));
 
                     if ($key == 'price') $price = $info;
                 }
