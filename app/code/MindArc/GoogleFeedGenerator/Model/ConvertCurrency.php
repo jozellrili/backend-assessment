@@ -17,7 +17,6 @@ class ConvertCurrency extends AbstractModel
     const CACHE_TTL = 3600;
     const CACHE_KEY = 'currency_exchange_rate';
 
-
     const DEFAULT_CURRENCY = 'USD';
     protected $baseCurrency = NULL;
 
