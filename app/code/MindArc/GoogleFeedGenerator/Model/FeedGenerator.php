@@ -44,9 +44,9 @@ class FeedGenerator extends AbstractModel
      * @param Image $imageHelper
      * @param DirectoryList $directory
      * @param LoggerInterface $logger
-     * @param CurrencyConverter $converter
+     * @param ConvertCurrency $converter
      */
-    public function __construct(CollectionFactory $collectionFactory, UrlInterface $urlInterface, Image $imageHelper, DirectoryList $directory, LoggerInterface $logger, CurrencyConverter $converter)
+    public function __construct(CollectionFactory $collectionFactory, UrlInterface $urlInterface, Image $imageHelper, DirectoryList $directory, LoggerInterface $logger, ConvertCurrency $converter)
     {
         $this->collectionFactory = $collectionFactory;
         $this->urlInterface = $urlInterface;
@@ -112,7 +112,7 @@ class FeedGenerator extends AbstractModel
                     if ($key == 'price') $price = $info;
                 }
 
-                $convertedAmount = $this->converter->convertAmount($price);
+                $convertedAmount = $this->converter->convert($price);
                 $item->appendChild($document->createElement('converted_price', $convertedAmount !== false ? $convertedAmount : 'n/a'));
 
                 $channel->appendChild($item);
