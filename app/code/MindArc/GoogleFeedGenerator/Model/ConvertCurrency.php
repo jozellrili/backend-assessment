@@ -14,7 +14,7 @@ class ConvertCurrency extends AbstractModel
     const FIXER_IO_API_KEY = '[insert_API_key_here]';
 
     /** Cache Configuration Options */
-    const CACHE_TTL = 3600; // 1 day
+    const CACHE_TTL = 3600; // 1hr
     const CACHE_KEY = 'currency_exchange_rate';
 
 
